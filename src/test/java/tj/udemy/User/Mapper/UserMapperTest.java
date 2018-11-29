@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import tj.udemy.Commons.ENUM.UserRole;
 import tj.udemy.User.domain.User;
 import tj.udemy.User.dto.UserDto;
+import tj.udemy.User.mapper.UserMapper;
 
 class UserMapperTest {
 	

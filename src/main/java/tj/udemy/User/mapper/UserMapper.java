@@ -1,7 +1,8 @@
-package tj.udemy.User.Mapper;
+package tj.udemy.User.mapper;
 
 import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 
 import tj.udemy.User.domain.User;
@@ -16,4 +17,5 @@ public interface UserMapper {
 	
 	@InheritInverseConfiguration
 	User userDtoToUser(UserDto dto);
+
 }
