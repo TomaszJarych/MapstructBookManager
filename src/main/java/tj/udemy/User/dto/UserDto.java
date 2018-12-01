@@ -2,9 +2,9 @@ package tj.udemy.User.dto;
 
 import java.time.LocalDateTime;
 
-import lombok.Data;
 import tj.udemy.Commons.BaseClass.BaseDto;
 import tj.udemy.Commons.ENUM.UserRole;
+import tj.udemy.userdetails.dto.UserDetailsDto;
 
 public class UserDto extends BaseDto {
 
@@ -19,6 +19,11 @@ public class UserDto extends BaseDto {
 	private LocalDateTime created = LocalDateTime.now();
 
 	private UserRole userRole;
+	
+	private String password;
+	
+	private UserDetailsDto details;
+
 
 	public String getFirstName() {
 		return firstName;
@@ -67,6 +72,16 @@ public class UserDto extends BaseDto {
 	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
+	
+	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public UserDto(Long id, String firstName, String lastName, String email, String login, LocalDateTime created,
 			UserRole userRole) {
@@ -83,4 +98,13 @@ public class UserDto extends BaseDto {
 		super();
 	}
 
+	public UserDetailsDto getDetails() {
+		return details;
+	}
+
+	public void setDetails(UserDetailsDto details) {
+		this.details = details;
+	}
+
+	
 }

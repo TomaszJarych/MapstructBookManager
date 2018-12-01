@@ -2,14 +2,17 @@ package tj.udemy.User.domain;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import lombok.Data;
 import tj.udemy.Commons.BaseClass.BaseEntity;
 import tj.udemy.Commons.ENUM.UserRole;
+import tj.udemy.userdetails.domain.UserDetails;
 
 @Entity
 @Table(name="app_user")
@@ -24,9 +27,15 @@ public class User  extends BaseEntity{
 	private String login;
 	
 	private LocalDateTime created = LocalDateTime.now();
+	
+	private String password;
 
 	@Enumerated(EnumType.STRING)
 	private UserRole userRole;
+	
+	@OneToOne(orphanRemoval=true, cascade=CascadeType.ALL)
+	@JoinColumn(name="app_user_details_id")
+	private UserDetails details;
 
 	public String getFirstName() {
 		return firstName;
@@ -75,6 +84,16 @@ public class User  extends BaseEntity{
 	public void setUserRole(UserRole userRole) {
 		this.userRole = userRole;
 	}
+	
+	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
 	public User(Long id, String firstName, String lastName, String email, String login, LocalDateTime created,
 			UserRole userRole) {
@@ -90,6 +109,16 @@ public class User  extends BaseEntity{
 	public User() {
 		super();
 	}
+
+	public UserDetails getDetails() {
+		return details;
+	}
+
+	public void setDetails(UserDetails details) {
+		this.details = details;
+	}
+	
+	
 	
 	
 	

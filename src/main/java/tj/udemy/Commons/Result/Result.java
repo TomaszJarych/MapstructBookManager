@@ -1,32 +1,46 @@
 package tj.udemy.Commons.Result;
 
-import static lombok.AccessLevel.PRIVATE;
+import lombok.Getter;
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor(access = PRIVATE)
+@Getter
 public class Result {
+	
+	private static final String OK_CODE = "200";
+	private static final String ERROR_CODE_500 = "500";
+	private static final String OK_MESSAGE = "OK";
 
-	private Integer errorCode;
+	private  String errorCode;
 
-	private String message;
+	private  String message;
 
-	private Object data;
+	private  Object data;
 
 	public static Result ok(Object data) {
-		return new Result(200, "OK", data);
+		return new Result(OK_CODE, OK_MESSAGE, data);
+	}
+	
+	public static Result okMessage() {
+		return new Result(OK_CODE, OK_MESSAGE, null);
 	}
 
 	public static Result error(String message) {
-		return new Result(500, message, null);
+		return new Result(ERROR_CODE_500, message, null);
 	}
 
-	public static Result errorWithCodeAndMessage(Integer code, String message) {
+	public static Result errorWithCodeAndMessage(String code, String message) {
 		return new Result(code, message, null);
 	}
 
-	public static Result errorWithObject(Integer code, String message, Object data) {
+	public static Result errorWithObject(String code, String message, Object data) {
 		return new Result(code, message, data);
 	}
+
+	private Result(String errorCode, String message, Object data) {
+		this.errorCode = errorCode;
+		this.message = message;
+		this.data = data;
+	}
+	
+	
 
 }
