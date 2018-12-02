@@ -1,9 +1,12 @@
 package tj.udemy.User.dto;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import tj.udemy.Commons.BaseClass.BaseDto;
 import tj.udemy.Commons.ENUM.UserRole;
+import tj.udemy.book.dto.BookDto;
 import tj.udemy.userdetails.dto.UserDetailsDto;
 
 public class UserDto extends BaseDto {
@@ -23,6 +26,8 @@ public class UserDto extends BaseDto {
 	private String password;
 	
 	private UserDetailsDto details;
+	
+	List<BookDto> books = new ArrayList<>();
 
 
 	public String getFirstName() {
@@ -105,6 +110,16 @@ public class UserDto extends BaseDto {
 	public void setDetails(UserDetailsDto details) {
 		this.details = details;
 	}
+
+	public List<BookDto> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<BookDto> books) {
+		this.books = books;
+	}
+	
+	
 
 	
 }

@@ -36,7 +36,7 @@ public class UserController {
 		UserDto dto = new UserDto(null, "Jan", "Kowalski", "email@wp.pl", "jankowal", LocalDateTime.now(),
 				UserRole.ADMIN);
 		UserDetailsDto details = new UserDetailsDto(null, "123556", "Piłsudskiego", "Wrocław");
-		dto.setDetails(details);
+//		dto.setDetails(details);
 		return Result.ok(userService.save(dto));
 	}
 

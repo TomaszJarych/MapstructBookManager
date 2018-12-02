@@ -1,17 +1,22 @@
 package tj.udemy.User.domain;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import tj.udemy.Commons.BaseClass.BaseEntity;
 import tj.udemy.Commons.ENUM.UserRole;
+import tj.udemy.book.domain.Book;
 import tj.udemy.userdetails.domain.UserDetails;
 
 @Entity
@@ -36,6 +41,9 @@ public class User  extends BaseEntity{
 	@OneToOne(orphanRemoval=true, cascade=CascadeType.ALL)
 	@JoinColumn(name="app_user_details_id")
 	private UserDetails details;
+	
+	@OneToMany(mappedBy="owner", fetch=FetchType.EAGER)
+	private List<Book> books = new ArrayList<>();
 
 	public String getFirstName() {
 		return firstName;
@@ -117,6 +125,16 @@ public class User  extends BaseEntity{
 	public void setDetails(UserDetails details) {
 		this.details = details;
 	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(List<Book> books) {
+		this.books = books;
+	}
+	
+	
 	
 	
 	
